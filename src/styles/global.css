@@ -40,7 +40,7 @@ a {
 }
 
 body {  
-  font-family: system-ui, sans-serif;
+  font-family: 'Hind', sans-serif;
   font-size: 16px;
   line-height: 150%;
   min-height: 100svh;
@@ -56,7 +56,7 @@ body {
 }
 
 h1, h2, h3, p.subtitle {
-  /* font-family Monts */
+  font-family: 'Montserrat', sans-serif;
   line-height: 1.2;
   margin: 0;
 }
