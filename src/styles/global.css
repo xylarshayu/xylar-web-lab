@@ -1,0 +1,116 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+/* colors */
+  --primary-color-100: #F5F3FF;
+  --primary-color-200: #DFDDE9;
+  --primary-color-300: #C9C7D2;
+  --primary-color-400: #87868F;
+  --primary-color-500: #717078;
+  --primary-color-600: #45444B;
+  --primary-color-700: #2F2F35;
+  --primary-color-800: #19191E;
+  --primary-color-900: #030308;
+  --secondary-color-100: #F2F2FF;
+  --secondary-color-200: #DDDDEA;
+  --secondary-color-300: #C7C8D5;
+  --secondary-color-400: #888996;
+  --secondary-color-500: #727481;
+  --secondary-color-600: #484A57;
+  --secondary-color-700: #333542;
+  --secondary-color-800: #1D202D;
+  --secondary-color-900: #080B1B;
+
+/* font sizes */
+  --text-xs: 0.812rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem; /* 1.125 scale */
+  --text-lg: 1.125rem;
+  --text-xl: 1.250rem;
+  --text-2xl: 1.438rem;
+  --text-3xl: 1.625rem;
+  --text-4xl: 1.812rem;
+  --text-5xl: 2rem;
+}
+
+body {  
+  font-family: system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 150%;
+  min-height: 100svh;
+  margin: 0;
+  background-color: var(--primary-color-200);
+  color: var(--primary-color-900);
+  transition: all 0.3s ease-in-out;
+}
+
+.dark body {
+  background-color: var(--primary-color-800);
+  color: var(--primary-color-100);
+}
+
+h1, h2, h3, p.subtitle {
+  /* font-family Monts */
+  line-height: 1.2;
+  margin: 0;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: var(--text-5xl);
+}
+
+h2 {
+  font-weight: 700;
+  font-size: var(--text-3xl);
+}
+
+p.subtitle {
+  font-weight: 600;
+  font-size: var(--text-lg);
+}
+
+
+
+/* sm screen */
+@media only screen and (min-width: 640px) {
+
+  :root {
+    /* font sizes */
+    --text-xs: 0.625rem;
+    --text-sm: 0.812rem;
+    --text-base: 1rem; /* 1.25 scale */
+    --text-lg: 1.25rem;
+    --text-xl: 1.562rem;
+    --text-2xl: 1.938rem;
+    --text-3xl: 2.438rem;
+    --text-4xl: 3.062rem;
+    --text-5xl: 3.812rem;
+  }
+  
+}
+
+/* lg screen */
+@media only screen and (min-width: 1024px) {
+
+  :root {
+    /* font sizes */
+    --text-xs: 0.562rem;
+    --text-sm: 0.75rem;
+    --text-base: 1rem; /* 1.33 scale */
+    --text-lg: 1.312rem;
+    --text-xl: 1.750rem;
+    --text-2xl: 2.375rem;
+    --text-3xl: 3.188rem;
+    --text-4xl: 4.188rem;
+    --text-5xl: 5.625rem;
+  }
+
+  
+}
