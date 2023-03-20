@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Flasklogo from "../components/flasklogo.astro";
+import FlaskIcon from "~icons/ri/flask-fill"
 ---
 
 <Layout title="Welcome to Xylar's Web Lab">
@@ -9,6 +10,8 @@ import Flasklogo from "../components/flasklogo.astro";
   <h1>Hi my name is Shayu</h1>
 
   <p>I also go by Xylar.</p>
+  <FlaskIcon class="flaskicon"/>
+  
 
 </Layout>
 
@@ -22,6 +25,7 @@ import Flasklogo from "../components/flasklogo.astro";
 </script>
 
 <style>
+
   body {
     display: flex;
     flex-direction: column;
@@ -40,6 +44,17 @@ import Flasklogo from "../components/flasklogo.astro";
     left: 20px;
   }
 
+  .flaskicon {
+    font-size: 2rem;
+    color: red;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .flaskicon:hover {
+    font-size: 3rem;
+    color: purple;
+    transition: all 0.3s ease-in-out;
+  }
 
 
 </style>
