@@ -1,0 +1,59 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"a"> & HTMLAttributes<"button">;
+const { class: className, ...attrs } = Astro.props as Props;
+const isAnchor = "href" in Astro.props;
+---
+
+{
+  !isAnchor ? (
+    <button class:list={['xButton' , className]} {...attrs}>
+      <slot />
+    </button>
+  ) : (
+    <a class:list={['xButton' , className]} {...attrs}>
+      <slot />
+    </a>
+  )
+}
+
+<style>
+
+  .xButton {
+    border: none;
+    padding: 0.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .xButton.primary {
+    color: var(--primary-color-900);
+    background-color: var(--secondary-color-100);
+  }
+
+  .xButton.secondary {
+    background-color: var(--secondary-color-800);
+    color: var(--secondary-color-100);
+  }
+
+  :global(.dark) .xButton.primary {
+    color: var(--primary-color-100);
+    background: var(--primary-color-900);
+  }
+
+  :global(.dark) .xButton.secondary {
+    background-color: var(--secondary-color-100);
+    color: var(--primary-color-800);  
+  }
+
+  .xButton:hover {
+    filter: brightness(1.3);
+    transition: all 0.3s ease-in-out;
+  }
+
+</style>

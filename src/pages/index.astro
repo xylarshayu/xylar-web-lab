@@ -2,7 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import Flasklogo from "../components/flasklogo.astro";
 import FlaskIcon from "~icons/ri/flask-fill";
+import GithubLogo from "~icons/ri/github-line"
 import Xylarlogo from "@components/xylarlogo.astro";
+import XButton from "@components/xButton.astro";
 ---
 
 <Layout title="Welcome to Xylar's Web Lab">
@@ -11,6 +13,12 @@ import Xylarlogo from "@components/xylarlogo.astro";
   <h1>Hi my name is Shayu</h1>
 
   <p>I also go by Xylar.</p>
+
+  <XButton class="primary">
+    Go to Github&nbsp; <GithubLogo />
+  </XButton>
+
+
 
 
   <Xylarlogo class="xylarlogo" />
