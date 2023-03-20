@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Flasklogo from "../components/flasklogo.astro";
-import FlaskIcon from "~icons/ri/flask-fill"
+import FlaskIcon from "~icons/ri/flask-fill";
+import Xylarlogo from "@components/xylarlogo.astro";
 ---
 
 <Layout title="Welcome to Xylar's Web Lab">
@@ -10,7 +11,10 @@ import FlaskIcon from "~icons/ri/flask-fill"
   <h1>Hi my name is Shayu</h1>
 
   <p>I also go by Xylar.</p>
-  <FlaskIcon class="flaskicon"/>
+
+
+  <Xylarlogo class="xylarlogo" />
+  
   
 
 </Layout>
@@ -56,5 +60,17 @@ import FlaskIcon from "~icons/ri/flask-fill"
     transition: all 0.3s ease-in-out;
   }
 
+  .xylarlogo {
+    height: 64px;
+    width: auto;
+    fill: red;
+    margin-top: 2rem;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .xylarlogo:hover {
+    fill: purple;
+    transition: all 0.3s ease-in-out;
+  }
 
 </style>
