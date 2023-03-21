@@ -24,23 +24,19 @@ import XButton from "@components/xButton.astro";
     </XButton>
   </span>
 
-
-
-
-  <Xylarlogo class="xylarlogo" />
+  <script>    
+    const flask = document.getElementById('flask');
+    flask?.addEventListener("click", () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage?.setItem('isDark', document.documentElement.classList.contains('dark').toString());
+    });
+  </script>
   
   
 
 </Layout>
 
-<script>
 
-  const flask = document.getElementById('flask');
-  flask?.addEventListener("click", () => {
-    document.documentElement.classList.toggle('dark');
-  });
-
-</script>
 
 <style>
 
