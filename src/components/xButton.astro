@@ -28,32 +28,32 @@ const isAnchor = "href" in Astro.props;
     font-size: 1rem;
     border-radius: 999px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
   }
 
   .xButton.primary {
-    color: var(--primary-color-900);
-    background-color: var(--secondary-color-100);
+    color: var(--neutral-swatch-900);
+    background-color: var(--primary-swatch-100);
   }
 
   .xButton.secondary {
-    background-color: var(--secondary-color-800);
-    color: var(--secondary-color-100);
+    background-color: var(--primary-swatch-800);
+    color: var(--primary-swatch-100);
   }
 
   :global(.dark) .xButton.primary {
-    color: var(--primary-color-100);
-    background: var(--primary-color-900);
+    color: var(--neutral-swatch-100);
+    background: var(--neutral-swatch-900);
   }
 
   :global(.dark) .xButton.secondary {
-    background-color: var(--secondary-color-100);
-    color: var(--primary-color-800);  
+    background-color: var(--primary-swatch-100);
+    color: var(--neutral-swatch-800);  
   }
 
   .xButton:hover {
     filter: brightness(1.3);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
   }
 
 </style>

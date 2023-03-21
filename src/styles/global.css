@@ -8,24 +8,25 @@ a {
 
 :root {
 /* colors */
-  --primary-color-100: #F5F3FF;
-  --primary-color-200: #DFDDE9;
-  --primary-color-300: #C9C7D2;
-  --primary-color-400: #87868F;
-  --primary-color-500: #717078;
-  --primary-color-600: #45444B;
-  --primary-color-700: #2F2F35;
-  --primary-color-800: #19191E;
-  --primary-color-900: #030308;
-  --secondary-color-100: #F2F2FF;
-  --secondary-color-200: #DDDDEA;
-  --secondary-color-300: #C7C8D5;
-  --secondary-color-400: #888996;
-  --secondary-color-500: #727481;
-  --secondary-color-600: #484A57;
-  --secondary-color-700: #333542;
-  --secondary-color-800: #1D202D;
-  --secondary-color-900: #080B1B;
+  --neutral-swatch-100: #F5F3FF;
+  --neutral-swatch-200: #DFDDE9;
+  --neutral-swatch-300: #C9C7D2;
+  --neutral-swatch-400: #87868F;
+  --neutral-swatch-500: #717078;
+  --neutral-swatch-600: #45444B;
+  --neutral-swatch-700: #2F2F35;
+  --neutral-swatch-800: #19191E;
+  --neutral-swatch-900: #030308;
+
+  --primary-swatch-100: #F2F2FF;
+  --primary-swatch-200: #DDDDEA;
+  --primary-swatch-300: #C7C8D5;
+  --primary-swatch-400: #888996;
+  --primary-swatch-500: #727481;
+  --primary-swatch-600: #484A57;
+  --primary-swatch-700: #333542;
+  --primary-swatch-800: #1D202D;
+  --primary-swatch-900: #080B1B;
 
 /* font sizes */
   --text-xs: 0.812rem;
@@ -37,22 +38,63 @@ a {
   --text-3xl: 1.625rem;
   --text-4xl: 1.812rem;
   --text-5xl: 2rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+
+  /* Glows */
+  --glow-xs: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 0px 4px rgba(255, 255, 255, 0.04), 0px -4px 16px rgba(255, 255, 255, 0.08);
+  --glow-border:  0px 0px 3px 1px rgba(255, 255,255,0.9);
+  --glow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 0px 8px rgba(255, 255, 255, 0.04), 0px -4px 16px rgba(255, 255, 255, 0.08);
+  --glow-md:  0px 0px 15px 1px rgba(255, 255,255,0.9);
+  --glow-lg: 0px 0px 20px 2px rgba(255, 255,255,0.9);
+  --glow-xl: 0px 0px 30px 3px rgba(255, 255,255,0.9);
+  --glow-2xl: 0px 0px 60px 4px rgba(255, 255,255,0.9);
+  --glow-inner: inset var(--glow);
+
+}
+
+html {
+  background: white;
+}
+
+html.dark {
+  background: black;
 }
 
 body {  
+  --pen-color: var(--neutral-swatch-900); /* For text, outlines */
+  --screen-color: var(--neutral-swatch-200); /* Background */
+  --base-color: var(--neutral-swatch-100); /* Opposite to pen */
+  --accent-color: var(--primary-swatch-700); /* Highlighted */
+  --gray-color: var(--primary-swatch-500); /* Grayed out */
+  --shade-color: var(--neutral-swatch-300); /* Shaded boxes */
+  --faint-border-color: var(--neutral-swatch-300); /* Catalogue divider */
+
   font-family: 'Hind', sans-serif;
   font-size: 16px;
   line-height: 150%;
   min-height: 100svh;
   margin: 0;
-  background-color: var(--primary-color-200);
-  color: var(--primary-color-900);
+  background-color: var(--screen-color);
+  color: var(--pen-color);
   transition: all 0.3s ease-in-out;
 }
 
 .dark body {
-  background-color: var(--primary-color-800);
-  color: var(--primary-color-100);
+  --pen-color: var(--neutral-swatch-100); /* For text, outlines */
+  --screen-color: var(--neutral-swatch-800); /* Background */
+  --base-color: var(--neutral-swatch-900); /* Opposite to pen */
+  --accent-color: var(--primary-swatch-200); /* Highlighted */
+  --gray-color: var(--primary-swatch-500); /* Grayed out */
+  --shade-color: var(--primary-swatch-900); /* Shaded boxes */
+  --faint-border-color: var(--primary-swatch-800); /* Catalogue divider */
 }
 
 h1, h2, h3, p.subtitle {
@@ -88,12 +130,12 @@ button {
 }
 
 button.primary {
-  background-color: var(--secondary-color-100);
+  background-color: var(--primary-swatch-100);
 }
 
 button.secondary {
-  background-color: var(--secondary-color-800);
-  color: var(--secondary-color-100);
+  background-color: var(--primary-swatch-800);
+  color: var(--primary-swatch-100);
 }
  */
 

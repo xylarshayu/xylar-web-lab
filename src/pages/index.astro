@@ -14,9 +14,15 @@ import XButton from "@components/xButton.astro";
 
   <p>I also go by Xylar.</p>
 
-  <XButton class="primary">
-    Go to Github&nbsp; <GithubLogo />
-  </XButton>
+  <span class="button-group">
+    <XButton class="secondary">
+      Go to Github&nbsp; <GithubLogo />
+    </XButton>
+
+    <XButton class="primary">
+      Launch Lab&nbsp; <FlaskIcon />
+    </XButton>
+  </span>
 
 
 
@@ -79,6 +85,19 @@ import XButton from "@components/xButton.astro";
   .xylarlogo:hover {
     fill: purple;
     transition: all 0.3s ease-in-out;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 32px;
+  }
+
+  .button-group button {
+    box-shadow: var(--shadow-lg);
+  }
+
+  :global(.dark) .button-group .primary {
+    box-shadow: var(--glow-md);
   }
 
 </style>
