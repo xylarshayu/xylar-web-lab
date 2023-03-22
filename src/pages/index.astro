@@ -67,10 +67,7 @@ import XButton from "@components/xButton.astro";
 
   <script>    
     const pref = document.getElementById('preferences');
-    pref?.addEventListener("click", () => {
-      document.documentElement.classList.toggle('dark');
-      localStorage?.setItem('isDark', document.documentElement.classList.contains('dark').toString());
-    });
+    pref?.addEventListener("click", darkSwitch);
   </script>
 
 </Layout>

@@ -1,11 +1,18 @@
-const darkSwitch = (() => {
+const darkSwitch = ():void => {
   document.documentElement.classList.toggle('dark');
   localStorage?.setItem('isDark', document.documentElement.classList.contains('dark').toString());
-});
+  const link = document.querySelector("link[rel~='icon']") as HTMLAnchorElement;
+  link!.href = `/assets/xylar_lab${setDark() ? '_dark' : ''}.svg`;
+};
 
-const setDark:boolean = (() => {
+const setDark = ():boolean => {
   let isDarkString = localStorage?.getItem('isDark');
   return isDarkString ? JSON.parse(isDarkString) : window.matchMedia('(prefers-color-scheme: dark)').matches;
-})();
+};
 
-setDark ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
+if (setDark()) {
+  document.documentElement.classList.add('dark');
+  const link = document.querySelector("link[rel~='icon']") as HTMLAnchorElement;
+  link!.href = `/assets/xylar_lab_dark.svg`;
+}
+else document.documentElement.classList.remove('dark');
