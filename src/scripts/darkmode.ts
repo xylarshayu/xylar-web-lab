@@ -12,7 +12,7 @@ const setDark = ():boolean => {
 
 if (setDark()) {
   document.documentElement.classList.add('dark');
-  const link = document.querySelector("link[rel~='icon']") as HTMLAnchorElement;
+  let link = document.querySelector("link[rel~='icon']") as HTMLAnchorElement;
   link!.href = `/assets/xylar_lab_dark.svg`;
 }
 else document.documentElement.classList.remove('dark');
