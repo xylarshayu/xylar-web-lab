@@ -1,5 +1,6 @@
 *, *:before, *:after {
   box-sizing: border-box;
+  margin: 0;
 }
 
 a {
@@ -82,7 +83,6 @@ body {
   font-size: 16px;
   line-height: 150%;
   min-height: 100svh;
-  margin: 0;
   background-color: var(--screen-color);
   color: var(--pen-color);
   transition: all 0.3s ease-in-out;
@@ -98,14 +98,13 @@ body {
   --faint-border-color: var(--primary-swatch-800); /* Catalogue divider */
 }
 
-h1, h2, h3, p.subtitle {
+h1, h2, h3 {
   font-family: 'Montserrat', sans-serif;
   line-height: 1.2;
-  margin: 0;
 }
 
 h1 {
-  font-weight: 800;
+  font-weight: 900;
   font-size: var(--text-5xl);
 }
 
@@ -115,8 +114,29 @@ h2 {
 }
 
 p.subtitle {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.5;
   font-weight: 600;
   font-size: var(--text-lg);
+}
+
+body::-webkit-scrollbar {
+  background-color: var(--shade-color);
+  width: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--gray-color);
+  border: 1.3px solid var(--shade-color);
+  border-radius: 20px;
+}
+
+.drop-shadow-glow {
+  filter: var(--drop-shadow);
+}
+
+.dark .drop-shadow-glow {
+  filter: var(--drop-glow);
 }
 
 /* 

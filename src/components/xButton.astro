@@ -2,13 +2,13 @@
 import type { HTMLAttributes } from "astro/types";
 
 type Props = HTMLAttributes<"a"> & HTMLAttributes<"button">;
-const { class: className, ...attrs } = Astro.props as Props;
+const { class: className, type = "button", ...attrs } = Astro.props as Props;
 const isAnchor = "href" in Astro.props;
 ---
 
 {
   !isAnchor ? (
-    <button class:list={['xButton' , className]} {...attrs}>
+    <button class:list={['xButton' , className]} type={type} {...attrs}>
       <slot />
     </button>
   ) : (
@@ -23,8 +23,9 @@ const isAnchor = "href" in Astro.props;
   .xButton {
     border: none;
     padding: 0.5rem 1.5rem;
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    line-height: 1.2rem;
     font-size: 1rem;
     border-radius: 999px;
     cursor: pointer;

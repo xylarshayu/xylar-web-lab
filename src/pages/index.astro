@@ -8,92 +8,114 @@ import XButton from "@components/xButton.astro";
 ---
 
 <Layout title="Welcome to Xylar's Web Lab">
-  <Flasklogo id="flask"/>
 
-  <h1>Hi my name is Shayu</h1>
+  <div id="top-section"> <!-- Not a <section> as purpose is only as styling wrapper -->
+    <Xylarlogo class="xylar-logo" />
 
-  <p>I also go by Xylar.</p>
+    <header>
 
-  <span class="button-group">
-    <XButton class="secondary">
-      Go to Github&nbsp; <GithubLogo />
-    </XButton>
+      <span>
+        <Flasklogo id="preferences" class="lab-logo drop-shadow-glow"/>
+        <h1>
+          Xylar's Web Lab
+        </h1>
+      </span>
 
-    <XButton class="primary">
-      Launch Lab&nbsp; <FlaskIcon />
-    </XButton>
-  </span>
+      <p class="subtitle">
+        Testing Ground for Components
+      </p>
+
+      <nav>
+        <XButton class="primary">
+          Launch Lab&nbsp; <FlaskIcon/>
+        </XButton>
+
+        <XButton href="https://github.com/xylarshayu" rel="noopener" target="_blank" class="secondary">
+          Go to Github&nbsp; <GithubLogo/>
+        </XButton>
+      </nav>
+
+    </header>
+
+
+
+  </div>
 
   <script>    
-    const flask = document.getElementById('flask');
-    flask?.addEventListener("click", () => {
+    const pref = document.getElementById('preferences');
+    pref?.addEventListener("click", () => {
       document.documentElement.classList.toggle('dark');
       localStorage?.setItem('isDark', document.documentElement.classList.contains('dark').toString());
     });
   </script>
-  
-  
 
 </Layout>
 
-
-
 <style>
 
-  body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-size: 30vh;
-    background-position: center center;
-  }
+#top-section {
+  background: linear-gradient(to bottom, var(--primary-swatch-100), transparent 25%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 300vh;
+  overflow: hidden;
+}
 
-  #flask {
-    height: 5vh;
-    width: auto;
-    transition: all 0.3s ease-in-out;
-    position: fixed;
-    top: 20px;
-    left: 20px;
-  }
+#top-section > .xylar-logo {
+  fill: var(--primary-swatch-200);
+  position: absolute;
+  top: -39.66vw;
+  right: 3vw;
+  z-index: 0;
+  height: 90vh;
+  width: auto;
+}
 
-  .flaskicon {
-    font-size: 2rem;
-    color: red;
-    transition: all 0.3s ease-in-out;
-  }
+#top-section header {
+  padding: 20vh 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
 
-  .flaskicon:hover {
-    font-size: 3rem;
-    color: purple;
-    transition: all 0.3s ease-in-out;
-  }
+#top-section header .lab-logo {
+  margin-bottom: 2.5rem;
+}
 
-  .xylarlogo {
-    height: 64px;
-    width: auto;
-    fill: red;
-    margin-top: 2rem;
-    transition: all 0.3s ease-in-out;
-  }
+#top-section header h1 {
+  line-height: 1.5;
+}
 
-  .xylarlogo:hover {
-    fill: purple;
-    transition: all 0.3s ease-in-out;
-  }
+#top-section header nav {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
 
-  .button-group {
-    display: flex;
-    gap: 32px;
-  }
+#top-section .xButton {
+  box-shadow: var(--shadow);
+}
 
-  .button-group button {
-    box-shadow: var(--shadow-lg);
-  }
 
-  :global(.dark) .button-group .primary {
-    box-shadow: var(--glow-md);
-  }
+
+
+
+
+/* Dark Mode */
+:global(.dark) #top-section {
+  background: linear-gradient(to bottom, var(--neutral-swatch-900), transparent 25%);
+}
+:global(.dark) #top-section > .xylar-logo {
+  fill: var(--neutral-swatch-800);
+}
+
+:global(.dark) #top-section nav .primary.xButton {
+  box-shadow: var(--glow);
+}
 
 </style>
