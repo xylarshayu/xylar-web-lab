@@ -120,6 +120,10 @@ p.subtitle {
   font-size: var(--text-lg);
 }
 
+p b {
+  font-weight: 700;
+}
+
 body::-webkit-scrollbar {
   background-color: var(--shade-color);
   width: 5px;

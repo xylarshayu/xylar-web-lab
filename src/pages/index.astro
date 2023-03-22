@@ -2,7 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import Flasklogo from "../components/flasklogo.astro";
 import FlaskIcon from "~icons/ri/flask-fill";
-import GithubLogo from "~icons/ri/github-line"
+import GithubLogo from "~icons/ri/github-line";
+import PuzzleIcon from "~icons/mdi/puzzle";
+import ReactIcon from "~icons/mdi/react";
+import TemplateIcon from "~icons/heroicons-solid/template";
 import Xylarlogo from "@components/xylarlogo.astro";
 import XButton from "@components/xButton.astro";
 ---
@@ -36,9 +39,30 @@ import XButton from "@components/xButton.astro";
       </nav>
 
     </header>
+    <section class="features">
 
+      <div>
+        <PuzzleIcon/>
+        <span>
+          <b>34</b> unique components
+        </span>
+      </div>
 
+      <div>
+        <ReactIcon/>
+        <span>
+          <b>6</b> supported frameworks
+        </span>
+      </div>
 
+      <div>
+        <TemplateIcon/>
+        <span>
+          <b>10</b> sample pages
+        </span>
+      </div>
+
+    </section>
   </div>
 
   <script>    
@@ -54,13 +78,12 @@ import XButton from "@components/xButton.astro";
 <style>
 
 #top-section {
-  background: linear-gradient(to bottom, var(--primary-swatch-100), transparent 25%);
+  background: linear-gradient(to bottom, var(--base-color), transparent 45%);
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  height: 300vh;
   overflow: hidden;
 }
 
@@ -75,14 +98,14 @@ import XButton from "@components/xButton.astro";
 }
 
 #top-section header {
-  padding: 20vh 0;
+  padding: 20vh 0 10vh; /* To be proportional for different screen sizes */
   z-index: 1;
   display: flex;
   flex-direction: column;
 }
 
 #top-section header .lab-logo {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 #top-section header h1 {
@@ -90,7 +113,7 @@ import XButton from "@components/xButton.astro";
 }
 
 #top-section header nav {
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,15 +124,32 @@ import XButton from "@components/xButton.astro";
   box-shadow: var(--shadow);
 }
 
+#top-section .features {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
 
+#top-section .features > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin: 4rem 0;
+}
+
+#top-section .features > div > svg {
+  height: 85px;
+  width: auto;
+  color: var(--accent-color);
+}
 
 
 
 
 /* Dark Mode */
-:global(.dark) #top-section {
-  background: linear-gradient(to bottom, var(--neutral-swatch-900), transparent 25%);
-}
 :global(.dark) #top-section > .xylar-logo {
   fill: var(--neutral-swatch-800);
 }
