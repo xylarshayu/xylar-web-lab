@@ -6,14 +6,17 @@ import GithubLogo from "~icons/ri/github-line";
 import PuzzleIcon from "~icons/mdi/puzzle";
 import ReactIcon from "~icons/mdi/react";
 import TemplateIcon from "~icons/heroicons-solid/template";
+import BookletIcon from "~icons/ri/booklet-fill"
 import Xylarlogo from "@components/xylarlogo.astro";
 import XButton from "@components/xButton.astro";
+import Catalogue from "@components/catalogue.astro";
+
 ---
 
 <Layout title="Welcome to Xylar's Web Lab">
 
   <div id="top-section"> <!-- Not a <section> as purpose is only as styling wrapper -->
-    <Xylarlogo class="xylar-logo" />
+    <Xylarlogo class="xylar-logo" /> <!-- TODO look into :before content: (#xylarlogo) approach-->
 
     <header>
 
@@ -36,6 +39,7 @@ import XButton from "@components/xButton.astro";
         <XButton href="https://github.com/xylarshayu" rel="noopener" target="_blank" class="secondary">
           Go to Github&nbsp; <GithubLogo/>
         </XButton>
+        <!-- TODO Change the base font to Arial  to fix weird vertical alignment issue! -->
       </nav>
 
     </header>
@@ -64,6 +68,19 @@ import XButton from "@components/xButton.astro";
 
     </section>
   </div>
+
+  <main id="catalogue">
+
+    <span class="heading-with-icon">
+      <BookletIcon />
+      <h2>
+        Catalogue
+      </h2>
+    </span>
+
+    <Catalogue />
+
+  </main>
 
   <script>    
     const pref = document.getElementById('preferences');
@@ -110,7 +127,7 @@ import XButton from "@components/xButton.astro";
 }
 
 #top-section header nav {
-  margin-top: 2.5rem;
+  margin-top: 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -134,7 +151,7 @@ import XButton from "@components/xButton.astro";
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  margin: 4rem 0;
+  margin: 3rem 0;
 }
 
 #top-section .features > div > svg {
@@ -143,8 +160,25 @@ import XButton from "@components/xButton.astro";
   color: var(--accent-color);
 }
 
+main {
+  padding: 5vh 13px;
+}
 
+main .heading-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
+main .heading-with-icon > svg {
+  height: 24px;
+  width: auto;
+  color: var(--accent-color);
+}
+
+main h2 {
+  display: inline-block;
+}
 
 /* Dark Mode */
 :global(.dark) #top-section > .xylar-logo {

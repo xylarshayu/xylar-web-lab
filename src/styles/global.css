@@ -47,7 +47,7 @@ a {
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25), 0 10px 12px -8px rgb(0 0 0 / 0.1);
   --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
 
   /* Glows */
@@ -78,6 +78,7 @@ body {
   --gray-color: var(--primary-swatch-500); /* Grayed out */
   --shade-color: var(--neutral-swatch-300); /* Shaded boxes */
   --faint-border-color: var(--neutral-swatch-300); /* Catalogue divider */
+  --not-selected-color: var(--primary-swatch-500);
 
   font-family: 'Hind', sans-serif;
   font-size: 16px;
@@ -96,6 +97,7 @@ body {
   --gray-color: var(--primary-swatch-500); /* Grayed out */
   --shade-color: var(--primary-swatch-900); /* Shaded boxes */
   --faint-border-color: var(--primary-swatch-800); /* Catalogue divider */
+  --not-selected-color: var(--primary-swatch-600);
 }
 
 h1, h2, h3 {
@@ -143,6 +145,8 @@ body::-webkit-scrollbar-thumb {
   filter: var(--drop-glow);
 }
 
+/* Common UI Elements */
+
 /* 
 --------- Useful in other project maybe ------------
 button {
@@ -163,6 +167,145 @@ button.secondary {
   color: var(--primary-swatch-100);
 }
  */
+
+/* Tabs */
+
+div[role="tablist"] {
+  display: inline-flex;
+  color: var(--gray-color);
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+div[role="tablist"] input {
+  display: none;
+}
+
+div[role="tablist"] label {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+  color: inherit;
+}
+
+div[role="tablist"] input:checked + label {
+  color: var(--accent-color);
+  text-shadow: 1px 0 0 var(--accent-color); /* Bold without layout shift */
+}
+
+/* Tabs: Underlined */
+
+div[role="tablist"].underlined-tabs {
+  gap: 2rem;
+}
+
+div[role="tablist"].underlined-tabs svg {
+  height: 1.5rem;
+  width: auto;
+}
+
+div[role="tablist"].underlined-tabs span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div[role="tablist"].underlined-tabs label {
+  padding-bottom: 0.5rem;
+}
+
+div[role="tablist"].underlined-tabs .the-underline {
+  height: 3px;
+  width: 0px;
+  background-color: transparent;
+  border-radius: 999px;
+  transition: all 0.3s ease-in-out;
+}
+
+div[role="tablist"].underlined-tabs span:hover .the-underline, div[role="tablist"].underlined-tabs input:checked ~ .the-underline {
+  background-color: var(--gray-color);
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+div[role="tablist"].underlined-tabs input:checked ~ .the-underline {
+  background-color: var(--accent-color);
+}
+
+/* Tabs: Segmented controls */
+
+div[role="tablist"].segmented-controls {
+  height: 28px;
+  width: fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 1px solid var(--gray-color);
+  border-radius: 3px;
+}
+
+div[role="tablist"].segmented-controls label {
+  padding: 5px;
+}
+
+div[role="tablist"].segmented-controls label svg {
+  height: 100%;
+  width: auto;
+  color: inherit;
+}
+
+div[role="tablist"].segmented-controls label:not(:last-child) {
+  border-right: 1px solid var(--gray-color);
+}
+
+/* Toggle */
+
+input[type="checkbox"].toggle-check {
+  padding: 0;
+  appearance: none;
+  width: 3rem;
+  height: 1.5rem;
+  border-radius: 1rem;
+  border: 0.2rem solid var(--pen-color);
+  background-color: inherit;
+  position: relative;
+}
+
+input[type="checkbox"].toggle-check:after {
+  content: '';
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background-color: var(--gray-color);
+  position: absolute;
+  left: 0.1rem;
+  top: 0.1rem;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(0);
+}
+
+input[type="checkbox"].toggle-check:checked:after {
+  transform: translateX(1.5rem);
+  background-color: var(--accent-color);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Animations */
+
+.skeleton {
+  animation: skeleton-loader 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loader {
+  0% {
+  background-color: rgba(109, 128, 148, 0.7);
+  }
+
+  100% {
+  background-color: rgba(109, 128, 148, 0.3);
+  }
+}
 
 /* sm screen */
 @media only screen and (min-width: 640px) {
