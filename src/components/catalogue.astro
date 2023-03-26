@@ -1,0 +1,94 @@
+---
+import PuzzleIcon from "~icons/mdi/puzzle";
+import TemplateIcon from "~icons/heroicons-solid/template";
+import SoloIcon from "~icons/material-symbols/view-column-2";
+import ListIcon from "~icons/material-symbols/table-rows-rounded";
+
+
+import MultiFrameworkSelect from "./multiFrameworkSelect.astro";
+
+const frameworks = {html: true, vue: true, react: false, astro: true, solid: false, svelte: false};
+---
+
+<div id="catalogue-menu">
+
+  <div role="tablist" class="underlined-tabs" id="catalogues">
+    <span>
+      <input type="radio" name="catalogue-tab" value="components" title="components" id="components" checked>
+      <label for="components" role="tab">
+        <PuzzleIcon/>&nbsp; Components 
+      </label>
+      <div class="the-underline"></div>
+    </span>
+
+    <span>
+      <input type="radio" name="catalogue-tab" value="pages" title="pages" id="pages">
+      <label for="pages" role="tab">
+        <TemplateIcon/>&nbsp; Pages
+      </label>
+      <div class="the-underline"></div>
+    </span>
+  </div>
+
+  <span class="menu-views">
+    <MultiFrameworkSelect frameworks={frameworks}/>
+
+    <div id="switchview" class="segmented-controls" role="tablist">
+      <input type="radio" name="view" value="list" title="list" id="list"/> 
+      <label for="list" role="tab">
+        <ListIcon />
+      </label>
+
+      <input type="radio" name="view" value="solo" id="solo" title="solo" checked/>
+      <label for="solo" role="tab">
+        <SoloIcon />
+      </label>
+    </div>
+
+    <script>
+
+      /* Segmented controls */
+      const radiogroup = document.getElementById("switchview") as HTMLInputElement;
+      radiogroup?.addEventListener("change", (e) => {
+        console.log((e.target as HTMLElement).id);
+      });
+    </script>
+
+  </span>
+
+</div>
+
+<div id="testsuite">
+  <div id="frameworks-selected">
+    Frameworks selected:
+  </div>
+  <div id="view-selected">
+    View selected:
+  </div>
+  <div id="catalogue-selected">
+    Catalogue selected:
+  </div>
+</div>
+
+<style>
+
+  #catalogue-menu {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  #catalogue-menu span.menu-views {
+    flex-basis: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #testsuite {
+    margin-top: 3rem;
+  }
+
+</style>
