@@ -1,0 +1,135 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import DownArrow from "~icons/material-symbols/arrow-drop-down";
+/* ▾ */
+
+
+export interface Props extends HTMLAttributes<'div'> {
+  frameworks: {
+    [key: string]: boolean
+  }
+}
+
+const { class:className, frameworks, ...attrs } = Astro.props as Props;
+
+---
+
+<button type="button" class:list={['framework-button' , className]}>
+  {Object.keys(frameworks).map((i) => (
+    <span class="framework-icon" data-framework-toggled={frameworks[i]} title={i}>
+      <img src={"/assets/icons/file-type-" + i + ".svg"} alt={i + '-icon'} loading="lazy" title={i} />
+    </span>
+  ))}
+  <span class="button-text">Frameworks&nbsp;</span><DownArrow />
+</button>
+
+<dialog id="framework-select">
+  {Object.keys(frameworks).map((i) => (
+    <div class="framework-option" data-framework-toggled={frameworks[i]} title={i + ' option'}>
+      <span>
+        {i}
+      </span>
+      <img src={"/assets/icons/file-type-" + i + ".svg"} alt={i + '-icon'} loading="lazy" height="24" width="24" title={i} />
+    </div>
+  ))}
+</dialog>
+
+<script>
+  const FrameworkSelect = document.getElementById("framework-select") as HTMLDialogElement;
+  const FrameworkButton = document.getElementsByClassName("framework-button")[0];
+
+  FrameworkButton.addEventListener("click", () => FrameworkSelect.showModal());
+  FrameworkSelect.addEventListener("click", (e) => {
+    if (e.target === FrameworkSelect) FrameworkSelect.close();
+  });
+</script>
+
+<style>
+
+  .framework-button {
+    display: inline-flex;
+    background: none;
+    border: none;
+    align-items: center;
+    padding: 0.375rem;
+    outline: var(--pen-color) 2px solid;
+    color: var(--pen-color);
+    border-radius: 999px;
+    cursor: pointer;
+  }
+
+  .framework-button .button-text {
+    display: none;
+  }
+
+  .framework-button .framework-icon:not([data-framework-toggled]) {
+    display: none;
+  }
+
+  .framework-button .framework-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 0.75rem;
+    background: var(--primary-swatch-100);
+    margin-right: 0.5rem;
+    box-shadow: var(--shadow-xl);
+  }
+
+  .framework-button .framework-icon img {
+    height: 80%;
+    width: auto;
+    /* animation: skeleton-loader 1s linear infinite alternate; */
+  }
+
+  #framework-select {
+    border: none;
+    background: none;
+    padding: 0;
+    outline: 2px solid var(--faint-border-color);
+    border-radius: 3px;
+    box-shadow: var(--shadow-xl);
+    margin: auto;
+    width: 100svw;
+  }
+
+  #framework-select::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  #framework-select .framework-option {
+    background-color: var(--screen-color);
+    font-size: var(--text-xl);
+    color: var(--pen-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  #framework-select .framework-option:hover {
+    filter: brightness(1.1);
+  }
+
+  #framework-select .framework-option:not([data-framework-toggled]) {
+    background-color: var(--not-selected-color);
+    transition: all 0.3s ease-in-out;
+  }
+
+  #framework-select .framework-option:not([data-framework-toggled]) * {
+    opacity: 0.5;
+  }
+
+  #framework-select .framework-option > span {
+    text-transform: capitalize;
+  }
+
+  #framework-select .framework-option:not(:last-child) {
+    border-bottom: 2px solid var(--faint-border-color);
+  }
+
+</style>
