@@ -5,18 +5,17 @@ import DownArrow from "~icons/material-symbols/arrow-drop-down";
 
 
 export interface Props extends HTMLAttributes<'div'> {
-  frameworks: {
-    [key: string]: boolean
-  }
 }
 
-const { class:className, frameworks, ...attrs } = Astro.props as Props;
+const frameworks = ['html', 'vue', 'react', 'astro', 'solid', 'svelte'];
+
+const { class:className, ...attrs } = Astro.props as Props;
 
 ---
 
 <button type="button" class:list={['framework-button' , className]}>
-  {Object.keys(frameworks).map((i) => (
-    <span class="framework-icon" data-framework-toggled={frameworks[i]} title={i}>
+  {frameworks.map((i) => (
+    <span class='framework-icon' title={i}>
       <img src={"/assets/icons/file-type-" + i + ".svg"} alt={i + '-icon'} loading="lazy" title={i} />
     </span>
   ))}
@@ -24,8 +23,8 @@ const { class:className, frameworks, ...attrs } = Astro.props as Props;
 </button>
 
 <dialog id="framework-select">
-  {Object.keys(frameworks).map((i) => (
-    <div class="framework-option" data-framework-toggled={frameworks[i]} title={i + ' option'}>
+  {frameworks.map((i) => (
+    <div class='framework-option' title={i}>
       <span>
         {i}
       </span>
@@ -36,12 +35,21 @@ const { class:className, frameworks, ...attrs } = Astro.props as Props;
 
 <script>
   const FrameworkSelect = document.getElementById("framework-select") as HTMLDialogElement;
-  const FrameworkButton = document.getElementsByClassName("framework-button")[0];
+  const FrameworkButton = document.querySelector(".framework-button");
 
-  FrameworkButton.addEventListener("click", () => FrameworkSelect.showModal());
+  FrameworkButton?.addEventListener("click", () => FrameworkSelect.showModal());
   FrameworkSelect.addEventListener("click", (e) => {
     if (e.target === FrameworkSelect) FrameworkSelect.close();
   });
+
+  const FrameworkToggles = document.querySelectorAll('.framework-option');
+  FrameworkToggles.forEach(option => {
+    option.addEventListener('click', () => {
+      toggleFramework(option.getAttribute('title')!.toString());
+    });
+  });
+
+
 </script>
 
 <style>
@@ -62,11 +70,17 @@ const { class:className, frameworks, ...attrs } = Astro.props as Props;
     display: none;
   }
 
-  .framework-button .framework-icon:not([data-framework-toggled]) {
+  .framework-button .framework-icon {
     display: none;
   }
 
-  .framework-button .framework-icon {
+  :global(body[html]) .framework-button .framework-icon[title="html"],
+  :global(body[vue]) .framework-button .framework-icon[title="vue"],
+  :global(body[react]) .framework-button .framework-icon[title="react"],
+  :global(body[astro]) .framework-button .framework-icon[title="astro"],
+  :global(body[solid]) .framework-button .framework-icon[title="solid"],
+  :global(body[svelte]) .framework-button .framework-icon[title="svelte"]
+  {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -115,12 +129,22 @@ const { class:className, frameworks, ...attrs } = Astro.props as Props;
     filter: brightness(1.1);
   }
 
-  #framework-select .framework-option:not([data-framework-toggled]) {
-    background-color: var(--not-selected-color);
+  :global(body:not([html])) .framework-option[title="html"],
+  :global(body:not([vue])) .framework-option[title="vue"],
+  :global(body:not([react])) .framework-option[title="react"],
+  :global(body:not([astro])) .framework-option[title="astro"],
+  :global(body:not([solid])) .framework-option[title="solid"],
+  :global(body:not([svelte])) .framework-option[title="svelte"] {
+    background-color: var(--not-selected-color) !important;
     transition: all 0.3s ease-in-out;
   }
 
-  #framework-select .framework-option:not([data-framework-toggled]) * {
+  :global(body:not([html])) .framework-option[title="html"] *,
+  :global(body:not([vue])) .framework-option[title="vue"] *,
+  :global(body:not([react])) .framework-option[title="react"] *,
+  :global(body:not([astro])) .framework-option[title="astro"] *,
+  :global(body:not([solid])) .framework-option[title="solid"] *,
+  :global(body:not([svelte])) .framework-option[title="svelte"] * {
     opacity: 0.5;
   }
 

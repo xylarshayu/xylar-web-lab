@@ -6,8 +6,6 @@ import ListIcon from "~icons/material-symbols/table-rows-rounded";
 
 
 import MultiFrameworkSelect from "./multiFrameworkSelect.astro";
-
-const frameworks = {html: true, vue: true, react: false, astro: true, solid: false, svelte: false};
 ---
 
 <div id="catalogue-menu">
@@ -31,7 +29,7 @@ const frameworks = {html: true, vue: true, react: false, astro: true, solid: fal
   </div>
 
   <span class="menu-views">
-    <MultiFrameworkSelect frameworks={frameworks}/>
+    <MultiFrameworkSelect/>
 
     <div id="switchview" class="segmented-controls" role="tablist">
       <input type="radio" name="view" value="list" title="list" id="list"/> 
