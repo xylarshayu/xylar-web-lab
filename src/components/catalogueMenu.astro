@@ -44,28 +44,17 @@ import MultiFrameworkSelect from "./multiFrameworkSelect.astro";
     </div>
 
     <script>
+      /* Menu tabs */
+      const MenuTabs = document.getElementById("catalogues");
+      MenuTabs?.addEventListener("change", toggleMenu);
 
       /* Segmented controls */
       const radiogroup = document.getElementById("switchview") as HTMLInputElement;
-      radiogroup?.addEventListener("change", (e) => {
-        console.log((e.target as HTMLElement).id);
-      });
+      radiogroup?.addEventListener("change", toggleView);
     </script>
 
   </span>
 
-</div>
-
-<div id="testsuite">
-  <div id="frameworks-selected">
-    Frameworks selected:
-  </div>
-  <div id="view-selected">
-    View selected:
-  </div>
-  <div id="catalogue-selected">
-    Catalogue selected:
-  </div>
 </div>
 
 <style>
@@ -84,9 +73,4 @@ import MultiFrameworkSelect from "./multiFrameworkSelect.astro";
     align-items: center;
     justify-content: space-between;
   }
-
-  #testsuite {
-    margin-top: 3rem;
-  }
-
 </style>
