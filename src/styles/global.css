@@ -291,6 +291,19 @@ input[type="checkbox"].toggle-check:checked:after {
   transition: all 0.3s ease-in-out;
 }
 
+/* The to-do placeholder */
+
+span.todo {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--pen-color);
+  width: 100%;
+  display: inline-flex;
+  margin: 3rem 0;
+  justify-content: center;
+  align-content: center;
+}
+
 /* Animations */
 
 .skeleton {

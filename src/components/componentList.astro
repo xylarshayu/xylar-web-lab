@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'div'>{
+}
+
+const { class: className, ...attrs } = Astro.props as Props;
+---
+
+<span {...attrs} class:list={["todo", className]}>
+  TODO Component List
+</span>
+
+<style>
+
+:global(body:not([list-view])) #component-list, :global(body[pages-menu]) #component-list{
+  display: none !important;
+}
+
+</style>
