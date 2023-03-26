@@ -121,7 +121,7 @@ const { class:className, ...attrs } = Astro.props as Props;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.1s ease-in-out;
     cursor: pointer;
   }
 
@@ -136,7 +136,7 @@ const { class:className, ...attrs } = Astro.props as Props;
   :global(body:not([solid])) .framework-option[title="solid"],
   :global(body:not([svelte])) .framework-option[title="svelte"] {
     background-color: var(--not-selected-color) !important;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.1s ease-in-out;
   }
 
   :global(body:not([html])) .framework-option[title="html"] *,
