@@ -1,0 +1,17 @@
+---
+export interface Props {
+  componentLink: string,
+  class?: string,
+  compProps: {
+    [key: string]: any
+  }
+}
+const { componentLink, class: className, compProps} = Astro.props as Props;
+
+const Something = componentLink.endsWith('.astro')
+  ? await import(`../components/${componentLink.split('.')[0]}.astro`)
+  : await import("../components/empty.astro");
+---
+
+
+<Something.default class={className} {...compProps} />

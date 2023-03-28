@@ -14,6 +14,8 @@ import ComponentList from "@components/componentList.astro";
 import ComponentSolo from "@components/componentSolo.astro";
 import PageList from "@components/pageList.astro";
 
+import CustomComponent from "@components/customComponent.astro";
+
 ---
 
 <Layout title="Welcome to Xylar's Web Lab">
@@ -73,6 +75,8 @@ import PageList from "@components/pageList.astro";
   </div>
 
   <main id="catalogue">
+
+    <CustomComponent componentLink="sampleComponent.astro" compProps={{name: "Mario"}} />
 
     <span class="heading-with-icon">
       <BookletIcon />
