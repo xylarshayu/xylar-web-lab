@@ -1,4 +1,4 @@
-const frameworks = ['html', 'vue', 'react', 'astro', 'solid', 'svelte'];
+/* const frameworks = ['html', 'vue', 'react', 'astro', 'solid', 'svelte'];
 const toggleFramework = (i: string):void => {
   let set = document.body.toggleAttribute(i);
   localStorage?.setItem(i, set.toString());
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   if (!frameworks.some(frameworkActive)) {toggleFramework('html'); toggleFramework('vue'); toggleFramework('react')};
-});
+}); */
 
 const toggleView = ():boolean => document.body.toggleAttribute('list-view');
 const toggleMenu = ():boolean => document.body.toggleAttribute('pages-menu');
