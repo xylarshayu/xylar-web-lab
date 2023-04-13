@@ -24,9 +24,21 @@ const { title } = Astro.props as Props;
 	</head>
 	<body>
 		<slot />
+    <footer id="main-footer">
+      © Copyright 2023 Xylar | All Rights Reserved
+    </footer>
 	</body>
 </html>
 
 <style is:global>
+
+  #main-footer {
+    font-size: var(--text-xs);
+    padding: 0.5rem 13px;
+    border-top: solid 1px var(--shade-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
 </style>

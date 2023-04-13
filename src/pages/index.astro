@@ -76,8 +76,6 @@ import CustomComponent from "@components/customComponent.astro";
 
   <main id="catalogue">
 
-    <CustomComponent componentLink="sampleComponent.astro" compProps={{name: "Mario"}} />
-
     <span class="heading-with-icon">
       <BookletIcon />
       <h2>
@@ -101,6 +99,10 @@ import CustomComponent from "@components/customComponent.astro";
 </Layout>
 
 <style>
+
+main {
+  padding: 5vh 13px;
+}
 
 #top-section {
   background: linear-gradient(to bottom, var(--base-color), transparent 45%);
@@ -169,10 +171,6 @@ import CustomComponent from "@components/customComponent.astro";
   height: 85px;
   width: auto;
   color: var(--accent-color);
-}
-
-main {
-  padding: 5vh 13px;
 }
 
 main .heading-with-icon {
